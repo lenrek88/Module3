@@ -11,8 +11,17 @@ import (
 	"time"
 )
 
-func rateHandler(w http.ResponseWriter, r *http.Request) {
+type Config struct {
+	APIBaseURL string        `json:"api_base_url"`
+	Timeout    time.Duration `json:"timeout"`
+}
 
+func rateHandler(w http.ResponseWriter, r *http.Request) {
+	d, err := os.ReadFile("config.json")
+	for i, _ := range d {
+		fmt.Println(string(i))
+	}
+	//fmt.Println(string(Config.)
 	delay := 3 * time.Second
 	ctx, cancel := context.WithTimeout(r.Context(), delay)
 	defer cancel()
