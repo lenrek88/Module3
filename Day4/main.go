@@ -16,19 +16,33 @@ type Config struct {
 	Timeout    time.Duration `json:"timeout"`
 }
 
-func rateHandler(w http.ResponseWriter, r *http.Request) {
-	d, err := os.ReadFile("config.json")
-	for i, _ := range d {
-		fmt.Println(string(i))
+var appConfig Config
+
+func loadConfig() error {
+	data, err := os.ReadFile("config.json")
+	if err != nil {
+		return fmt.Errorf("error reading config file: %w", err)
 	}
-	//fmt.Println(string(Config.)
-	delay := 3 * time.Second
-	ctx, cancel := context.WithTimeout(r.Context(), delay)
+
+	err = json.Unmarshal(data, &appConfig)
+	if err != nil {
+		return fmt.Errorf("error parsing config: %w", err)
+	}
+
+	return nil
+}
+
+func rateHandler(w http.ResponseWriter, r *http.Request) {
+	err := loadConfig()
+	if err != nil {
+		fmt.Println(err)
+	}
+	ctx, cancel := context.WithTimeout(r.Context(), appConfig.Timeout)
 	defer cancel()
 
 	from := r.URL.Query().Get("from")
 	to := r.URL.Query().Get("to")
-	rate, err := exchanger.FetchRate(ctx, from, to)
+	rate, err := exchanger.FetchRate(appConfig.APIBaseURL, ctx, from, to)
 	if err != nil {
 		context.WithCancel(ctx)
 		fmt.Println("GET : ", err)
@@ -42,14 +56,17 @@ func rateHandler(w http.ResponseWriter, r *http.Request) {
 
 func exchangeHandler(w http.ResponseWriter, r *http.Request) {
 
-	delay := 3 * time.Second
-	ctx, cancel := context.WithTimeout(r.Context(), delay)
+	err := loadConfig()
+	if err != nil {
+		fmt.Println(err)
+	}
+	ctx, cancel := context.WithTimeout(r.Context(), appConfig.Timeout)
 	defer cancel()
 
 	from := r.URL.Query().Get("from")
 	to := r.URL.Query().Get("to")
 	amount := r.URL.Query().Get("amount")
-	rate, err := exchanger.FetchRate(ctx, from, to)
+	rate, err := exchanger.FetchRate(appConfig.APIBaseURL, ctx, from, to)
 	if err != nil {
 		context.WithCancel(ctx)
 		return

@@ -11,9 +11,9 @@ import (
 type Rate float64
 type apiResponse map[string]any
 
-func request(from, to string, ctx context.Context) Rate {
+func request(urlConf string, from, to string, ctx context.Context) Rate {
 
-	url := "https://latest.currency-api.pages.dev/v1/currencies/" + from + ".json"
+	url := urlConf + from + ".json"
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil) // запрос с контекстом
 
 	if err != nil {
@@ -46,12 +46,12 @@ func request(from, to string, ctx context.Context) Rate {
 	return Rate(rate)
 }
 
-func FetchRate(ctx context.Context, from, to string) (Rate, error) {
+func FetchRate(urlConf string, ctx context.Context, from, to string) (Rate, error) {
 
 	resultChan := make(chan Rate)
 
 	go func() {
-		rate := request(from, to, ctx)
+		rate := request(urlConf, from, to, ctx)
 		resultChan <- rate
 	}()
 
