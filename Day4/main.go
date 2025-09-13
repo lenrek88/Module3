@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"lenrek88/exchanger"
+	"lenrek88/logger"
 	"net/http"
 	"os"
 	"strconv"
@@ -37,7 +38,8 @@ func rateHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	ctx, cancel := context.WithTimeout(r.Context(), appConfig.Timeout)
+
+	ctx, cancel := context.WithTimeout(r.Context(), time.Second*appConfig.Timeout)
 	defer cancel()
 
 	from := r.URL.Query().Get("from")
@@ -60,7 +62,7 @@ func exchangeHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	ctx, cancel := context.WithTimeout(r.Context(), appConfig.Timeout)
+	ctx, cancel := context.WithTimeout(r.Context(), time.Second*appConfig.Timeout)
 	defer cancel()
 
 	from := r.URL.Query().Get("from")
@@ -81,7 +83,10 @@ func exchangeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
+	e := logger.Init()
+	if e != nil {
+		fmt.Println(e)
+	}
 	http.HandleFunc("/rate", rateHandler)
 	http.HandleFunc("/exchange", exchangeHandler)
 	http.ListenAndServe(":8080", nil)

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"time"
 )
 
 type Rate float64
@@ -17,10 +18,10 @@ func request(urlConf string, from, to string, ctx context.Context) Rate {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil) // запрос с контекстом
 
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("ERROR TO REQUEST ERR:", err)
 	}
-	//delay := time.Second * 2
-	//time.Sleep(delay)
+	delay := time.Second * 4
+	time.Sleep(delay)
 	client := &http.Client{}
 	resp, err2 := client.Do(req)
 

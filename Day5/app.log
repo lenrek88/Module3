@@ -1,0 +1,23 @@
+INFO: 2025/09/13 13:24:06 main.go:66: Server starting on port : 8080
+ERROR: 2025/09/13 13:24:06 main.go:68: Failed to start server: listen tcp: address 8080: missing port in address
+INFO: 2025/09/13 13:24:15 main.go:66: Server starting on port : 8080
+ERROR: 2025/09/13 13:24:15 main.go:68: Failed to start server: listen tcp: address 8080: missing port in address
+INFO: 2025/09/13 13:28:55 main.go:66: Server starting on port : 8080
+INFO: 2025/09/13 13:30:15 main.go:66: Server starting on port : 8080
+INFO: 2025/09/13 20:46:45 main.go:20: Server starting on port : 8080
+INFO: 2025/09/13 21:45:39 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 21:45:54 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 21:58:12 main.go:27: Server starting on port : 8080
+ERROR: 2025/09/13 21:58:22 rateHandler.go:40: RateHandler error: handler: failed to fetch rate for USD to EUR: service: API request failed: api client: API returned non-200 status for USD: 404 Not Found
+INFO: 2025/09/13 22:00:53 main.go:27: Server starting on port : 8080
+ERROR: 2025/09/13 22:01:18 rateHandler.go:40: RateHandler error: handler: failed to fetch rate for usd to fd: service: API request failed: api client: rate not found for currency pair usd to fd
+INFO: 2025/09/13 22:42:34 main.go:27: Server starting on port : 8080
+ERROR: 2025/09/13 22:42:41 rateHandler.go:40: RateHandler error: handler: failed to fetch rate for usd to fd: service: API request failed: api client: rate not found for currency pair usd to fd
+INFO: 2025/09/13 22:42:44 rateHandler.go:52: rate : fromusd, torub, rate83.75172471
+INFO: 2025/09/13 22:44:27 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 22:44:29 rateHandler.go:52: rate : from usd, to rub, rate 83.75172471
+INFO: 2025/09/13 22:44:35 rateHandler.go:52: rate : from usd, to usd, rate 1
+INFO: 2025/09/13 22:44:40 exchangeHandler.go:62: exchange : from usd, to rub, amount 100, exchange8375.172471
+INFO: 2025/09/13 22:45:20 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 22:45:23 exchangeHandler.go:62: exchange : from usd, to rub, amount 100, exchange 8375.172471
+INFO: 2025/09/13 22:45:27 rateHandler.go:52: rate : from usd, to rub, rate 83.75172471

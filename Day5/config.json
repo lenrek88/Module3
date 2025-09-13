@@ -1,4 +1,5 @@
 {
   "api_base_url": "https://latest.currency-api.pages.dev/v1/currencies/",
-  "timeout" : 3
+  "timeout" : 3,
+  "port" : "8080"
 }
