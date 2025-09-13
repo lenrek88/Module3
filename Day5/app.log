@@ -21,3 +21,52 @@ INFO: 2025/09/13 22:44:40 exchangeHandler.go:62: exchange : from usd, to rub, am
 INFO: 2025/09/13 22:45:20 main.go:27: Server starting on port : 8080
 INFO: 2025/09/13 22:45:23 exchangeHandler.go:62: exchange : from usd, to rub, amount 100, exchange 8375.172471
 INFO: 2025/09/13 22:45:27 rateHandler.go:52: rate : from usd, to rub, rate 83.75172471
+INFO: 2025/09/13 23:07:39 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 23:29:55 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 23:30:04 rateHandler.go:52: rate : from usd, to rub, rate 83.75172471
+INFO: 2025/09/13 23:30:42 rateHandler.go:52: rate : from usd, to rub, rate 83.75172471
+INFO: 2025/09/13 23:36:48 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 23:36:56 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 23:38:52 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 23:39:04 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 23:39:22 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 23:47:14 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 23:47:30 rateHandler.go:52: rate : from usd, to rub, rate 83.75172471
+INFO: 2025/09/13 23:48:17 main.go:27: Server starting on port : 8080
+INFO: 2025/09/13 23:55:23 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:05:07 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:05:39 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:06:08 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:06:54 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:11:58 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:12:01 rateHandler.go:52: rate : from usd, to rub, rate 83.75172471
+ERROR: 2025/09/14 00:12:04 statsHandler.go:44: StatsHandler error: StatsHandler: date parse error: parsing time "2025/09/13" as "2006-01-02": cannot parse "/09/13" as "-"
+ERROR: 2025/09/14 00:12:16 statsHandler.go:44: StatsHandler error: StatsHandler: date parse error: parsing time "2025/09/13" as "2006-01-02": cannot parse "/09/13" as "-"
+ERROR: 2025/09/14 00:12:38 statsHandler.go:44: StatsHandler error: StatsHandler: date parse error: parsing time "2025/09/13" as "2006-01-02": cannot parse "/09/13" as "-"
+ERROR: 2025/09/14 00:12:39 statsHandler.go:44: StatsHandler error: StatsHandler: date parse error: parsing time "2025/09/13" as "2006-01-02": cannot parse "/09/13" as "-"
+ERROR: 2025/09/14 00:12:42 statsHandler.go:44: StatsHandler error: StatsHandler: date parse error: parsing time "2025/09/13" as "2006-01-02": cannot parse "/09/13" as "-"
+ERROR: 2025/09/14 00:12:44 statsHandler.go:44: StatsHandler error: StatsHandler: date parse error: parsing time "2025/09/13" as "2006-01-02": cannot parse "/09/13" as "-"
+INFO: 2025/09/14 00:12:46 main.go:27: Server starting on port : 8080
+ERROR: 2025/09/14 00:12:49 statsHandler.go:44: StatsHandler error: StatsHandler: date parse error: parsing time "2025/09/13" as "2006-01-02": cannot parse "/09/13" as "-"
+ERROR: 2025/09/14 00:13:37 statsHandler.go:22: StatsHandler error: StatsHandler: time parse error: parsing time "" as "2006-01-02": cannot parse "" as "2006"
+ERROR: 2025/09/14 00:13:44 rateHandler.go:40: RateHandler error: handler: failed to fetch rate for USD to EUR: service: API request failed: api client: API returned non-200 status for USD: 404 Not Found
+ERROR: 2025/09/14 00:13:48 statsHandler.go:44: StatsHandler error: StatsHandler: date parse error: parsing time "2025/09/13" as "2006-01-02": cannot parse "/09/13" as "-"
+ERROR: 2025/09/14 00:13:55 statsHandler.go:44: StatsHandler error: StatsHandler: date parse error: parsing time "2025/09/13" as "2006-01-02": cannot parse "/09/13" as "-"
+INFO: 2025/09/14 00:13:59 main.go:27: Server starting on port : 8080
+ERROR: 2025/09/14 00:14:51 statsHandler.go:22: StatsHandler error: StatsHandler: time parse error: parsing time "2006/01/02" as "2006-01-02": cannot parse "/01/02" as "-"
+INFO: 2025/09/14 00:24:35 main.go:27: Server starting on port : 8080
+ERROR: 2025/09/14 00:24:37 statsHandler.go:44: StatsHandler error: StatsHandler: date parse error: parsing time "2025/09/13" as "2006-01-02": cannot parse "/09/13" as "-"
+INFO: 2025/09/14 00:25:30 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:26:38 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:35:10 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:36:05 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:37:08 main.go:27: Server starting on port : 8080
+ERROR: 2025/09/14 00:37:08 statsHandler.go:22: StatsHandler error: StatsHandler: time parse error: parsing time "2025-09-14" as "2006/01/02": cannot parse "-09-14" as "/"
+INFO: 2025/09/14 00:38:22 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:46:32 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:47:15 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:49:15 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:49:39 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:49:45 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 00:49:52 main.go:27: Server starting on port : 8080
+ERROR: 2025/09/14 00:50:03 statsHandler.go:23: StatsHandler error: StatsHandler: time parse error: parsing time "" as "2006-01-02": cannot parse "" as "2006"
