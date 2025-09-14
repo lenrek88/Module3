@@ -24,7 +24,6 @@ func main() {
 	http.HandleFunc("/rate", rateHandler)
 	http.HandleFunc("/exchange", exchangeHandler)
 	http.HandleFunc("/stats", handlers.StatsHandler)
-
 	logger.Info("Server starting on port" + " : " + config.AppConfig.Port)
 	if err := http.ListenAndServe(":"+config.AppConfig.Port, nil); err != nil {
 		logger.Error("Failed to start server", err)
