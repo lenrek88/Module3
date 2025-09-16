@@ -1,16 +1,17 @@
 package handlers
 
 import (
-	"encoding/json"
 	"fmt"
 	"lenrek88/logger"
 	"net/http"
 	"os"
 	"strings"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
-func StatsHandler(w http.ResponseWriter, r *http.Request) {
+func StatsHandler(c *gin.Context) {
 
 	data, err := os.ReadFile("./app.log")
 	if err != nil {
@@ -22,8 +23,8 @@ func StatsHandler(w http.ResponseWriter, r *http.Request) {
 
 	var amountRateContains int64
 	var amountExchangeContains int64
-	start := r.URL.Query().Get("start")
-	end := r.URL.Query().Get("end")
+	start := c.Query("start")
+	end := c.Query("end")
 	if start != "" || end != "" {
 
 		timeLayout := "2006-01-02"
@@ -83,13 +84,6 @@ func StatsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	t := "на период c " + start + " по " + end + " были выполнены запросы : " + "rate : " + strRate + " exchange : " + strExchange
 
-	stats, err := json.Marshal(t)
-	if err != nil {
-		err = fmt.Errorf("statsHandler: failed to marshal response: %w", err)
-		logger.Error("statsHandler error", err)
-		http.Error(w, "Internal server error", http.StatusInternalServerError)
-		return
-	}
-	w.Write(stats)
+	c.JSON(http.StatusOK, gin.H{"rate": t})
 
 }

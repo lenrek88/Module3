@@ -78,3 +78,5 @@ ERROR: 2025/09/14 12:01:18 rateHandler.go:40: RateHandler error: handler: failed
 ERROR: 2025/09/14 12:01:19 rateHandler.go:40: RateHandler error: handler: failed to fetch rate for USD to EUR: service: API request failed: api client: API returned non-200 status for USD: 404 Not Found
 INFO: 2025/09/14 12:01:23 rateHandler.go:52: rate : from usd, to rub, rate 84.04383815
 INFO: 2025/09/14 12:01:27 exchangeHandler.go:68: exchange : from usd, to rub, amount 100, exchange 8404.383815
+INFO: 2025/09/14 12:29:30 main.go:27: Server starting on port : 8080
+INFO: 2025/09/14 12:29:34 exchangeHandler.go:68: exchange : from usd, to rub, amount 100, exchange 8404.383815

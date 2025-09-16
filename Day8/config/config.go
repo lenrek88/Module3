@@ -8,9 +8,9 @@ import (
 )
 
 type Config struct {
-	APIBaseURL string        `json:"api_base_url"`
-	Timeout    time.Duration `json:"timeout"`
-	Port       string        `json:"port"`
+	APIBaseURL map[string]string `json:"api_base_url"`
+	Timeout    time.Duration     `json:"timeout"`
+	Port       string            `json:"port"`
 }
 
 var AppConfig Config

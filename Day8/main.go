@@ -5,7 +5,8 @@ import (
 	"lenrek88/exchanger"
 	"lenrek88/handlers"
 	"lenrek88/logger"
-	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -21,12 +22,14 @@ func main() {
 
 	rateHandler := handlers.NewRateHandler(exchangeService).RateHandler
 	exchangeHandler := handlers.NewExchangeHandler(exchangeService).ExchangeHandler
-	http.HandleFunc("/rate", rateHandler)
-	http.HandleFunc("/exchange", exchangeHandler)
-	http.HandleFunc("/stats", handlers.StatsHandler)
-	logger.Info("Server starting on port" + " : " + config.AppConfig.Port)
-	if err := http.ListenAndServe(":"+config.AppConfig.Port, nil); err != nil {
+
+	r := gin.Default()
+	r.GET("/rate", rateHandler)
+	r.GET("/exchange", exchangeHandler)
+	r.GET("/stats", handlers.StatsHandler)
+	if err := r.Run(":" + config.AppConfig.Port); err != nil {
 		logger.Error("Failed to start server", err)
 		panic(err)
 	}
+
 }
