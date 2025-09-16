@@ -27,7 +27,7 @@ func main() {
 
 	r := gin.Default()
 	limiter := middleware.NewClientLimiter(5, time.Minute)
-	loggerIP := middleware.NewLoggerIP("IP_logger")
+	loggerIP := middleware.NewLoggerIP("IP_logger.log")
 	r.Use(limiter.Middleware(), loggerIP.Middleware())
 
 	r.GET("/rate", rateHandler)
