@@ -12,6 +12,14 @@ import (
 	"net/http"
 )
 
+// TodayHandler - имя хэндлера
+// TodayHandler
+// @Summary today handle
+// @Param q query string true "город \n Example: Kazan" moscow
+// @param lang query string true "локализация \n Example: ru" ru
+// @param unit query string true "шкала градусов \n Example: Standard,Imperial,Metric"
+// @Success 200 {string} rate
+// @Router /today [get]
 func TodayHandler(c *gin.Context) {
 	url := config.AppConfig.APIBaseURL["today"]
 

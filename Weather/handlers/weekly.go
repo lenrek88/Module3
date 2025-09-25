@@ -3,12 +3,21 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"lenrek88/api"
 	"lenrek88/config"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
+// WeeklyHandler - имя хэндлера
+// WeeklyHandler
+// @Summary Weekly handle
+// @Param q query string true "город \n Example: Kazan" moscow
+// @param lang query string true "локализация \n Example: ru" ru
+// @param unit query string true "шкала градусов \n Example: Standard,Imperial,Metric"
+// @Success 200 {string} rate
+// @Router /weekly [get]
 func WeeklyHandler(c *gin.Context) {
 
 	unit := c.DefaultQuery("unit", "metric")

@@ -1,0 +1,57 @@
+basePath: / – базовый адрес (может быть /api или /api/v1)
+host: localhost:8080 – адрес для запросов
+info:
+  contact: {}
+  description: API для погоды – текстовое описание АПИ
+  title: Документация – заголовок всей доки
+  version: 1.0 – версия АПИ
+paths:
+  /today:
+    get:
+      parameters:
+      - description: "город \n Example: Kazan"
+        in: query
+        name: q
+        required: true
+        type: string
+      - description: "локализация \n Example: ru"
+        in: query
+        name: lang
+        required: true
+        type: string
+      - description: "шкала градусов \n Example: Standard,Imperial,Metric"
+        in: query
+        name: unit
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: today handle
+  /weekly:
+    get:
+      parameters:
+      - description: "город \n Example: Kazan"
+        in: query
+        name: q
+        required: true
+        type: string
+      - description: "локализация \n Example: ru"
+        in: query
+        name: lang
+        required: true
+        type: string
+      - description: "шкала градусов \n Example: Standard,Imperial,Metric"
+        in: query
+        name: unit
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Weekly handle
+swagger: "2.0"

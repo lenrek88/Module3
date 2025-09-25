@@ -1,0 +1,85 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API для погоды – текстовое описание АПИ",
+        "title": "Документация – заголовок всей доки",
+        "contact": {},
+        "version": "1.0 – версия АПИ"
+    },
+    "host": "localhost:8080 – адрес для запросов",
+    "basePath": "/ – базовый адрес (может быть /api или /api/v1)",
+    "paths": {
+        "/today": {
+            "get": {
+                "summary": "today handle",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "город \n Example: Kazan",
+                        "name": "q",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "локализация \n Example: ru",
+                        "name": "lang",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "шкала градусов \n Example: Standard,Imperial,Metric",
+                        "name": "unit",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/weekly": {
+            "get": {
+                "summary": "Weekly handle",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "город \n Example: Kazan",
+                        "name": "q",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "локализация \n Example: ru",
+                        "name": "lang",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "шкала градусов \n Example: Standard,Imperial,Metric",
+                        "name": "unit",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
