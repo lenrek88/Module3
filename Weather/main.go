@@ -1,47 +1,27 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
-	"io"
-	"net/http"
+	"lenrek88/config"
+	"lenrek88/handlers"
+	"lenrek88/middleware"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	r := gin.Default()
-	r.GET("/weather", weatherHandler)
-	if err := r.Run(":8080"); err != nil {
+	if err := config.LoadConfig("config.json"); err != nil {
 		panic(err)
 	}
-}
+	r := gin.Default()
+	limiter := middleware.NewClientLimiter(5, time.Minute)
+	cache := middleware.NewCacheMiddleware(30 * time.Second)
+	r.Use(limiter.Middleware(), cache.Middleware())
 
-func weatherHandler(c *gin.Context) {
-	url := "https://api.openweathermap.org/data/2.5/forecast?q=moscow&appid=85b3329d911fdb03a5450fbb580353ab&units=metric"
-	req, err := http.NewRequestWithContext(c, http.MethodGet, url, nil)
-	if err != nil {
-		fmt.Println(err)
-	}
-	client := &http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		fmt.Println(err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		fmt.Println(resp.StatusCode)
-	}
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		fmt.Println(err)
+	r.GET("/today", handlers.TodayHandler)
+	r.GET("/weekly", handlers.WeeklyHandler)
+	if err := r.Run(config.AppConfig.Port); err != nil {
+		panic(err)
 	}
 
-	var res map[string]any
-	if err := json.Unmarshal(body, &res); err != nil {
-		fmt.Println(err)
-	}
-
-	c.JSON(http.StatusOK, res)
 }

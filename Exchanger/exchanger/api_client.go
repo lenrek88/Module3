@@ -67,10 +67,11 @@ func (c *APIClient) fetchDevRates(ctx context.Context, from, to string) (Rate, e
 	}
 
 	return Rate(rate), nil
+
 }
 
 func (c *APIClient) fetchCbrRates(ctx context.Context, from, to string) (Rate, error) {
-	
+
 	from = strings.ToUpper(from)
 	to = strings.ToUpper(to)
 

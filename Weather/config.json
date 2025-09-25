@@ -1,0 +1,9 @@
+{
+  "api_base_url": {
+    "today" : "https://api.openweathermap.org/data/2.5/weather",
+    "forecast" : "https://api.openweathermap.org/data/2.5/forecast"
+  },
+  "appid" : "85b3329d911fdb03a5450fbb580353ab",
+  "timeout" : 3,
+  "port" : ":8080"
+}

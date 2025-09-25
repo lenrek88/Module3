@@ -3,6 +3,6 @@
     "dev" : "https://latest.currency-api.pages.dev/v1/currencies/",
     "cbr" : "https://www.cbr-xml-daily.ru/daily_json.js"
   },
-  "timeout" : 3,
+  "timeout_s" : 3,
   "port" : "8080"
 }
