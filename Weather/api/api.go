@@ -1,13 +1,13 @@
 package api
 
 import (
+	"context"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"io"
 	"net/http"
 )
 
-func Fetch(c *gin.Context, url string) ([]byte, error) {
+func Fetch(c context.Context, url string) ([]byte, error) {
 	req, err := http.NewRequestWithContext(c, http.MethodGet, url, nil)
 	if err != nil {
 		fmt.Println(err)

@@ -10,14 +10,14 @@ import (
 )
 
 type CacheItem struct {
-	data      []byte
-	timestamp time.Time
+	Data      []byte
+	Timestamp time.Time
 }
 
 type CacheMiddleware struct {
-	cache map[string]*CacheItem
-	mu    sync.Mutex
-	ttl   time.Duration
+	Cache map[string]*CacheItem
+	Mu    sync.Mutex
+	Ttl   time.Duration
 }
 
 type bodyWriter struct {
@@ -31,27 +31,27 @@ func (w *bodyWriter) Write(b []byte) (int, error) {
 }
 
 func NewCacheMiddleware(ttl time.Duration) *CacheMiddleware {
-	return &CacheMiddleware{cache: make(map[string]*CacheItem), ttl: ttl}
+	return &CacheMiddleware{Cache: make(map[string]*CacheItem), Ttl: ttl}
 }
 
 func (cm *CacheMiddleware) Middleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		key := c.Request.URL.RequestURI()
-		cm.mu.Lock()
-		defer cm.mu.Unlock()
-		item, exists := cm.cache[key]
+		cm.Mu.Lock()
+		defer cm.Mu.Unlock()
+		item, exists := cm.Cache[key]
 
-		if exists && time.Since(item.timestamp) < cm.ttl {
-			c.Data(http.StatusOK, "application/json", item.data)
+		if exists && time.Since(item.Timestamp) < cm.Ttl {
+			c.Data(http.StatusOK, "application/json", item.Data)
 			c.Abort()
 			return
 		}
 		writer := &bodyWriter{body: &bytes.Buffer{}, ResponseWriter: c.Writer}
 		c.Writer = writer
 		c.Next()
-		cm.cache[key] = &CacheItem{
-			data:      writer.body.Bytes(),
-			timestamp: time.Now(),
+		cm.Cache[key] = &CacheItem{
+			Data:      writer.body.Bytes(),
+			Timestamp: time.Now(),
 		}
 
 	}

@@ -27,7 +27,6 @@ func WeeklyHandler(c *gin.Context) {
 	url := config.AppConfig.APIBaseURL["forecast"]
 	fullURL := fmt.Sprintf("%s?q=%s&units=%s&lang=%s&appid=%s",
 		url, q, unit, lang, appid)
-	fmt.Println(fullURL)
 	body, err := api.Fetch(c, fullURL)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{

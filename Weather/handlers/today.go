@@ -21,9 +21,14 @@ import (
 // @Success 200 {string} rate
 // @Router /today [get]
 func TodayHandler(c *gin.Context) {
+	unit := c.DefaultQuery("unit", "metric")
+	lang := c.DefaultQuery("lang", "ru")
+	appid := c.DefaultQuery("appid", config.AppConfig.Appid)
+	q := c.DefaultQuery("q", "Moscow")
 	url := config.AppConfig.APIBaseURL["today"]
-
-	body, err := api.Fetch(c, url)
+	fullURL := fmt.Sprintf("%s?q=%s&units=%s&lang=%s&appid=%s",
+		url, q, unit, lang, appid)
+	body, err := api.Fetch(c, fullURL)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": err.Error(),
