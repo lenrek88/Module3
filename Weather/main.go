@@ -44,13 +44,14 @@ func main() {
 		r := gin.Default()
 		limiter := middleware.NewClientLimiter(100, time.Minute)
 		cache := middleware.NewCacheMiddleware(30 * time.Second)
-		r.Use(limiter.Middleware(), cache.Middleware())
+		r.Use(limiter.Middleware(), cache.Middleware(), gin.Logger(), middleware.Recovery())
 
 		docs.SwaggerInfo.BasePath = "/"
 		r.GET("/docs/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 
 		r.GET("/today", handlers.TodayHandler)
 		r.GET("/weekly", handlers.WeeklyHandler)
+
 		if err := r.Run(config.AppConfig.Port); err != nil {
 			panic(err)
 		}
